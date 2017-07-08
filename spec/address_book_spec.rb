@@ -8,6 +8,17 @@ RSpec.describe AddressBook do
     expect(entry.email).to eq expected_email
   end
 
+  describe "#nuke" do
+    it "should nuke all entires" do
+      book.add_entry("ro","111111111","ro@gmail.com")
+      book.add_entry("ro","111111111","ro@gmail.com")
+      book.add_entry("ro","111111111","ro@gmail.com")
+
+      book.nuke
+      expect(book.entries.size).to eq 0
+    end
+  end
+
   describe "attributes" do
     it "responds to entries" do
       expect(book).to respond_to(:entries)
